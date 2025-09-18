@@ -65,15 +65,16 @@ function calcularSoma() {
   let expr = document.getElementById("expressao").value;
   let lista = parseExpressao(expr);
   let media = simularSoma(100, lista);
-  document.getElementById("resultado").innerText = "Resultado: " + media.toFixed(1);
+  document.getElementById("resultado").innerText = "Resultado: " + media.toFixed();
 }
 
 function calcularMaior() {
   let expr = document.getElementById("expressao").value;
   let lista = parseExpressao(expr);
   let media = simularMaiorDoPrimeiro(100, lista);
-  document.getElementById("resultado").innerText = "Resultbado: " + media.toFixed(2);
+  document.getElementById("resultado").innerText = "Resultado: " + media.toFixed();
 }
+
 
 
 
