@@ -64,16 +64,17 @@ function simularMaiorDoPrimeiro(vezes, expressoes) {
 function calcularSoma() {
   let expr = document.getElementById("expressao").value;
   let lista = parseExpressao(expr);
-  let media = simularSoma(100, lista);
-  document.getElementById("resultado").innerText = "Resultado: " + media.toFixed();
+  let media = simularSoma(1000, lista);
+  document.getElementById("resultado").innerText = "Resultado [100x]: " + media.toFixed();
 }
 
 function calcularMaior() {
   let expr = document.getElementById("expressao").value;
   let lista = parseExpressao(expr);
-  let media = simularMaiorDoPrimeiro(100, lista);
-  document.getElementById("resultado").innerText = "Resultado: " + media.toFixed();
+  let media = simularMaiorDoPrimeiro(500, lista);
+  document.getElementById("resultado").innerText = "Resultado [500x]: " + media.toFixed();
 }
+
 
 
 
