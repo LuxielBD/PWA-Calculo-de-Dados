@@ -50,7 +50,7 @@ function simularMaiorDoPrimeiro(vezes, expressoes) {
       if (item.tipo === "dado") {
         let rolls = rolarDados(item.qtd, item.faces);
         if (j===0) total += Math.max(...rolls); // primeiro grupo → pega o maior
-        else total += rolls.reduce((a,b)=>a+b,0); // demais grupos → soma normal
+        else total += rolls.reduce((a,b)=>a+b,0); //  grupos → soma normal
       } else {
         total += item.valor;
       }
@@ -65,13 +65,14 @@ function calcularSoma() {
   let expr = document.getElementById("expressao").value;
   let lista = parseExpressao(expr);
   let media = simularSoma(100, lista);
-  document.getElementById("resultado").innerText = "Resultado: " + media.toFixed(1);
+  document.getElementById("resultado").innerText = "Resultado: " + media.toFixed(0.1);
 }
 
 function calcularMaior() {
   let expr = document.getElementById("expressao").value;
   let lista = parseExpressao(expr);
   let media = simularMaiorDoPrimeiro(100, lista);
-  document.getElementById("resultado").innerText = "Resultado: " + media.toFixed(1);
+  document.getElementById("resultado").innerText = "Resultado: " + media.toFixed(0.2);
 }
+
 
