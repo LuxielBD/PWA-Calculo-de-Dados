@@ -14,7 +14,8 @@ function parseExpressao(expr) {
   for (let p of partes) {
     if (p.includes("d")) {
       let [qtd, faces] = p.split("d");
-      lista.push({ tipo: "dado", qtd: parseInt(qtd), faces: parseInt(faces) });
+      qtd = qtd.trim() === "" ? 1 : parseInt(qtd); // assume 1 se estiver vazio
+      lista.push({ tipo: "dado", qtd, faces: parseInt(faces) });
     } else if (p.trim() !== "") {
       lista.push({ tipo: "constante", valor: parseInt(p) });
     }
@@ -29,14 +30,14 @@ function simularSoma(vezes, expressoes) {
     let total = 0;
     for (let item of expressoes) {
       if (item.tipo === "dado") {
-        total += rolarDados(item.qtd, item.faces).reduce((a,b)=>a+b,0);
+        total += rolarDados(item.qtd, item.faces).reduce((a, b) => a + b, 0);
       } else {
         total += item.valor;
       }
     }
     resultados.push(total);
   }
-  return resultados.reduce((a,b)=>a+b,0)/resultados.length;
+  return resultados.reduce((a, b) => a + b, 0) / resultados.length;
 }
 
 // Simulação “maior do primeiro grupo”
@@ -45,19 +46,19 @@ function simularMaiorDoPrimeiro(vezes, expressoes) {
   let resultados = [];
   for (let i = 0; i < vezes; i++) {
     let total = 0;
-    for (let j=0;j<expressoes.length;j++) {
+    for (let j = 0; j < expressoes.length; j++) {
       let item = expressoes[j];
       if (item.tipo === "dado") {
         let rolls = rolarDados(item.qtd, item.faces);
-        if (j===0) total += Math.max(...rolls); // primeiro grupo → pega o maior
-        else total += rolls.reduce((a,b)=>a+b,0); //  grupos → soma normal
+        if (j === 0) total += Math.max(...rolls); // primeiro grupo → pega o maior
+        else total += rolls.reduce((a, b) => a + b, 0); // demais grupos → soma normal
       } else {
         total += item.valor;
       }
     }
     resultados.push(total);
   }
-  return resultados.reduce((a,b)=>a+b,0)/resultados.length;
+  return resultados.reduce((a, b) => a + b, 0) / resultados.length;
 }
 
 // Funções ligadas aos botões
@@ -65,7 +66,7 @@ function calcularSoma() {
   let expr = document.getElementById("expressao").value;
   let lista = parseExpressao(expr);
   let media = simularSoma(1000, lista);
-  document.getElementById("resultado").innerText = "Resultado [100x]: " + media.toFixed();
+  document.getElementById("resultado").innerText = "Resultado [1000x]: " + media.toFixed();
 }
 
 function calcularMaior() {
@@ -74,8 +75,3 @@ function calcularMaior() {
   let media = simularMaiorDoPrimeiro(500, lista);
   document.getElementById("resultado").innerText = "Resultado [500x]: " + media.toFixed();
 }
-
-
-
-
-
