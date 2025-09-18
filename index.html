@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Dados RPG</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#c8a2c8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 30px;
+      background-color: #000000; /* fundo preto */
+      color: #ffffff; /* letras brancas */
+    }
+
+    h1 { color: #ffffff; }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      border: 2px solid #c8a2c8; /* borda lilás pastel */
+      border-radius: 5px;
+      background-color: #222222;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: #000000; 
+      cursor: pointer;
+      margin: 5px;
+      transition: background-color 0.3s;
+    }
+
+    #btn-soma {
+      background-color: #c8a2c8; /* lilás pastel */
+    }
+
+    #btn-soma:hover { background-color: #b190b1; }
+
+    #btn-maior {
+      background-color: #87cefa; /* azul pastel */
+    }
+
+    #btn-maior:hover { background-color: #70b7e3; }
+
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Calculadora de Dados RPG</h1>
+  <p>Digite a expressão (ex: <b>2d20+3d6+5</b>)</p>
+  <p><i>O Botão de testes manterá apenas o maior valor do primeiro dado, e fará a soma com os valores seguintes</i></p>
+
+  <input id="expressao" value="2d20+10">
+  <br>
+  <button id="btn-soma" onclick="calcularSoma()">Calcular Média (Para danos)</button>
+  <br>
+  <button id="btn-maior" onclick="calcularMaior()">Calcular Média (Para testes)</button>
+
+  <div id="resultado">Média: --</div>
+
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>
